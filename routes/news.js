@@ -1,17 +1,36 @@
 const express = require('express');
-const queryString = require('querystring');
-const {fetchNews} = require('../service/news');
+const {searchNews, fetchHeadlines} = require('../service/news');
+const { validateQuery } = require('../utils/query');
 
 const router = express.Router();
 
 /* GET news listing. */
-router.get('/', async function(req, res, next) {
+router.get('/search', async function(req, res, next) {
   try {
-    const result = await fetchNews(req.query)
-    res.json(result)
+    validateQuery(req.query)
+    const result = await searchNews(req.query)
+    if (!result.errors) {
+      res.json(result)
+    } else {
+      res.status(500).send(result.errors);
+    }
   } catch (err) {
-    return next(err);
+    res.status(500).send({ error: err.message })
   }
 });
+
+router.get('/headlines', async function(req, res, next) {
+  try {
+    validateQuery(req.query)
+    const result = await fetchHeadlines(req.query)
+    if (!result.errors) {
+      res.json(result)
+    } else {
+      res.status(500).send(result.errors);
+    }
+  } catch (err) {
+    res.status(500).send({ error: err.message })
+  }
+})
 
 module.exports = router;
