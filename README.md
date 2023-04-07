@@ -29,3 +29,6 @@ This is a simple backend api to return news fetched from GNews.
   ```
 - Run `npm install`
 - Run the server using `npm start` or `npm run dev` script
+
+## Endpoint detail
+- GET /news?keyword=ai&lang=en&country=us
