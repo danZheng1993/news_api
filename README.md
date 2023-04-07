@@ -4,7 +4,7 @@ This is a simple backend api to return news fetched from GNews.
 
 ## Features
 
-- One endpoint to accept `keyword`, `lang`, `country` to fetch news from GNews search endpoint and returns it
+- Two endpoints for search the news and get top headlines.
 
 ## Environment
 - Built with node 19.8.1
@@ -31,4 +31,26 @@ This is a simple backend api to return news fetched from GNews.
 - Run the server using `npm start` or `npm run dev` script
 
 ## Endpoint detail
-- GET /news?keyword=ai&lang=en&country=us
+- GET /news/search
+  Allows you to search news using keyword and other options
+
+| Parameter Name | Default Value | Description                                                   |
+| -------------- | ------------- | ------------------------------------------------------------- |
+| q              | None          | This parameter allows you to specify your search keywords     |
+| lang           | Any           | This parameter allows you to specify the language of the news |
+| country        | Any           | This parameter allows you to specify the country              |
+| max            | 10            | This parameter allows you to specify the number of news       |
+| from           | None          | This parameter is for filter the articles by publication date |
+| to             | None          | This parameter is for filter the articles by publication date |
+
+- GET /news/headlines
+  Allows you to get top headlines with options
+  
+| Parameter Name | Default Value | Description                                                   |
+| -------------- | ------------- | ------------------------------------------------------------- |
+| category       | general       | This parameter allows you to specify your filter category     |
+| lang           | Any           | This parameter allows you to specify the language of the news |
+| country        | Any           | This parameter allows you to specify the country              |
+| max            | 10            | This parameter allows you to specify the number of news       |
+| from           | None          | This parameter is for filter the articles by publication date |
+| to             | None          | This parameter is for filter the articles by publication date |
