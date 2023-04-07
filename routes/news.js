@@ -1,9 +1,17 @@
-var express = require('express');
-var router = express.Router();
+const express = require('express');
+const queryString = require('querystring');
+const {fetchNews} = require('../service/news');
 
-/* GET users listing. */
-router.get('/', function(req, res, next) {
-  res.send('respond with a resource');
+const router = express.Router();
+
+/* GET news listing. */
+router.get('/', async function(req, res, next) {
+  try {
+    const result = await fetchNews(req.query)
+    res.json(result)
+  } catch (err) {
+    return next(err);
+  }
 });
 
 module.exports = router;
