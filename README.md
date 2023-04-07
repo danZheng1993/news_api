@@ -27,4 +27,5 @@ This is a simple backend api to return news fetched from GNews.
     NEWS_BASE_URL=https://gnews.io/api/v4/search
     NEWS_API_KEY=b6b193cb033a703ded97769f0d15b3a5
   ```
+- Run `npm install`
 - Run the server using `npm start` or `npm run dev` script
